@@ -15,7 +15,7 @@ jobs:
             sshpass -p $useast_11 ssh root@207.246.95.150 'docker images' 
             
      - run: |
-            sshpass -p $useast_11 ssh root@8.9.37.108 'docker images'
+            sshpass -p $useast_13 ssh root@8.9.37.108 'docker images'
 workflows:
  version: 2
  rolling_update:
