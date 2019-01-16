@@ -1,1 +1,24 @@
+version: 2
+jobs:
+ vultr_deploy_fetchsh:
+   machine: true
+   steps:
+ #  - run:
+  #  command: |
+   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
 
+     - run: |
+             sudo apt update && sudo apt install sshpass -y
+             sshpass -p $USER_PASS11 ssh ubuntu@3.17.57.40 'ls'
+             
+   #  - run: |
+    #         sshpass -p $USER_PASS2 ssh ubuntu@18.224.139.241 'ls'
+workflows:
+ version: 2
+ rolling_update:
+   jobs:
+     - vultr_deploy_fetchsh:
+         filters:
+           branches:
+             only:
+               - master
