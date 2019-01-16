@@ -12,7 +12,7 @@ jobs:
              sshpass -p $USER_PASS11 ssh ubuntu@3.17.57.40 'sudo docker images'
              
      - run: |
-            sshpass -p $useast_11 ssh ubuntu@207.246.95.150 'sudo docker images'
+            sshpass -p $useast_11 ssh root@207.246.95.150 'docker images'
 workflows:
  version: 2
  rolling_update:
