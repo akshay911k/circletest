@@ -8,11 +8,11 @@ jobs:
    #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
 
      - run: |
-             sudo apt update && sudo apt install sshpass -y
-             sshpass -p $USER_PASS11 ssh ubuntu@3.17.57.40 'ls && sudo docker images'
+        #     sudo apt update && sudo apt install sshpass -y
+             sshpass -p $USER_PASS11 ssh ubuntu@3.17.57.40 'sudo docker images'
              
-   #  - run: |
-    #         sshpass -p $USER_PASS2 ssh ubuntu@18.224.139.241 'ls'
+     - run: |
+            sshpass -p $useast_11 ssh ubuntu@207.246.95.150 'docker images'
 workflows:
  version: 2
  rolling_update:
