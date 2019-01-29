@@ -3,8 +3,8 @@ jobs:
  vultr_deploy_fetchsh:
    machine: true
    steps:
-   - run:
-     command: |
+   - run: |
+      command: |
        ssh-keyscan 18.222.134.76 >> ~/.ssh/known_hosts 'ls'
 
     # - run: |
