@@ -9,7 +9,6 @@ jobs:
   #  - run: |
    #         ssh root@useast-0.iogamemaker.com 'ls'
       - run: |
-       #sudo apt update && sudo apt install sshpass -y
            ssh ubuntu@18.223.238.178 'ls'
              
 workflows:
