@@ -10,6 +10,7 @@ jobs:
    #         ssh root@useast-0.iogamemaker.com 'ls'
       - run: |
            ssh ubuntu@18.223.238.178 'ls'
+           ssh ubuntu@18.218.146.77 'ls'
              
 workflows:
  version: 2
