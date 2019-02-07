@@ -30,3 +30,8 @@ workflows:
            branches:
              only:
                - master
+      - vultr_deploy_fetchsh:
+         filters:
+           branches:
+             only:
+               - master
