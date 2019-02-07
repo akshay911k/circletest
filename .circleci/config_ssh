@@ -1,0 +1,12 @@
+jobs:
+ vultr_deploy_fetchsh:
+   machine: true
+   steps:
+#   - run: |
+ #     command: |
+  #     ssh-keyscan 18.222.134.76 >> ~/.ssh/known_hosts'ls'
+  #  - run: |
+   #         ssh root@useast-0.iogamemaker.com 'ls'
+      - run: |
+           ssh ubuntu@18.223.238.178 'ls'
+           ssh ubuntu@18.218.146.77 'ls'
