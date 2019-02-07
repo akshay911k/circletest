@@ -1,3 +1,4 @@
+version: 2
 jobs:
  vultr_deploy_fetchsh:
    machine: true
@@ -10,3 +11,13 @@ jobs:
       - run: |
            ssh ubuntu@18.223.238.178 'ls'
            ssh ubuntu@18.218.146.77 'ls'
+             
+workflows:
+ version: 2
+ rolling_update:
+   jobs:
+     - vultr_deploy_fetchsh:
+         filters:
+           branches:
+             only:
+               - master
