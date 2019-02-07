@@ -8,9 +8,9 @@ jobs:
   #     ssh-keyscan 18.222.134.76 >> ~/.ssh/known_hosts 'ls'
   #  - run: |
    #         ssh root@useast-0.iogamemaker.com 'ls'
-     - run: |
-       #    sudo apt update && sudo apt install sshpass -y
-            ssh ubuntu@18.223.238.178 'ls'
+      - run: |
+       #sudo apt update && sudo apt install sshpass -y
+           ssh ubuntu@18.223.238.178 'ls'
              
 workflows:
  version: 2
