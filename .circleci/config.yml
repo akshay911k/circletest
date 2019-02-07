@@ -10,11 +10,7 @@ jobs:
    #         ssh root@useast-0.iogamemaker.com 'ls'
       - run: |
            ssh ubuntu@18.223.238.178 'ls'
-  - vultr_deploy_fetchsh:
-         filters:
-           branches:
-             only:
-               - master         
+         
   vultr_deploy_fetchsh_1:
     machine: true
     steps:
@@ -31,6 +27,11 @@ workflows:
  rolling_update:
    jobs:
      - vultr_deploy_fetchsh_1:
+         filters:
+           branches:
+             only:
+               - master
+     - vultr_deploy_fetchsh:
          filters:
            branches:
              only:
