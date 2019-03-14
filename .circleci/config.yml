@@ -13,7 +13,7 @@ jobs:
              sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'
              
      - run: |
-            sshpass -p $test1mode ssh ubuntu@18.223.1.247 'ls' 
+            sshpass -p $test1mode ssh ubuntu@18.223.1.247 'ls -ltr' 
             
 workflows:
  version: 2
