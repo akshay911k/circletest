@@ -1,0 +1,26 @@
+version: 2
+jobs:
+ vultr_deploy_fetchsh:
+   machine: true
+   steps:
+ #  - run:
+  #  command: |
+   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
+
+
+     - run: |
+            sudo apt update && sudo apt install sshpass -y
+             sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'
+             
+     - run: |
+            sshpass -p $test1mode ssh ubuntu@18.223.1.247 'ls' 
+            
+workflows:
+ version: 2
+ rolling_update:
+   jobs:
+     - vultr_deploy_fetchsh:
+         filters:
+           branches:
+             only:
+               - master
