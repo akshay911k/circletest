@@ -19,12 +19,13 @@ jobs:
          if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
          then 
             sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'
+            echo $?
          fi   
              
      - run: |
          if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
          then
-            echo "echo"
+            echo "echo ssh2"
          fi
             
 workflows:
