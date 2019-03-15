@@ -9,16 +9,21 @@ jobs:
 
 
      - run: |            
-         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
-         then 
+  #       if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
+         if [ -n "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" ]; then
             echo $?
-            ls
          fi
-            
+        
      - run: |            
           if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
          then 
-            echo "testup1"
+            echo "testup1"test:
+  post:
+    - >
+      if [ -n "${RUN_NIGHTLY_BUILD}" ]; then
+        ./bin/run-functional-tests.sh ${FUNCTIONAL_TEST_TARGET};
+      fi
+
             echo $?
          fi   
       
