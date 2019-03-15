@@ -1,6 +1,6 @@
 version: 2
 jobs:
- vultr_deploy_fetchsh:
+ circleci_if_else_test:
    machine: true
    steps:
  #  - run:
@@ -9,24 +9,24 @@ jobs:
 
 
      - run: |            
-         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" != 0 ]]
+         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
          then 
             echo $?
             ls
          fi
             
      - run: |            
-         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
+          if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
          then 
             echo "testup1"
             echo $?
          fi   
-            
+      
 workflows:
  version: 2
  rolling_update:
    jobs:
-     - vultr_deploy_fetchsh:
+     - circleci_if_else_test:
          filters:
            branches:
              only:
