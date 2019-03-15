@@ -10,7 +10,7 @@ jobs:
 
      - run: |            
           if [ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]; then
-            echo $? ;
+            sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls' ;
           fi
         
      - run: |            
