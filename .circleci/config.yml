@@ -10,10 +10,10 @@ jobs:
 
      - run: |
             sudo apt update && sudo apt install sshpass -y
-             sshpass -p $sanju ssh ubuntu@52.32.223.142142 'ls'
+             sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'
              
      - run: |
-            sshpass -p $test1mode ssh ubuntu@18.223.1.247 'ls -ltr' 
+            sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr' 
             
 workflows:
  version: 2
