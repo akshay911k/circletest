@@ -14,7 +14,9 @@ jobs:
             fi
              
      - run: |
-            sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'
+         if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]; then
+            echo "echo"
+            fi
             
 workflows:
  version: 2
