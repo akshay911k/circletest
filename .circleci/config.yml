@@ -1,0 +1,20 @@
+version: 2
+jobs:
+  parallelism: 2
+  build:
+    working_directory: ~/foo
+    docker:
+      - image: ruby:2.3.3
+    steps:
+      - checkout
+      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3  # must pass to proceed
+      - run: |
+          if [[ "${CIRCLE_NODE_INDEX}" == 0 ]]
+          then
+             bin/rubocop # TestA: current: bails on fail
+          fi
+      - run: 
+          if [[ "${CIRCLE_NODE_INDEX}" == 1 ]]
+          then
+             bin/rspec # TestB: expected: this should run in addition, even on failure of rubocop
+          fi
