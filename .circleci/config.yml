@@ -5,16 +5,23 @@ jobs:
    steps:
  #  - run:
   #  command: |
-   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
+   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hostsp
 
 
-     - run: |
-            sudo apt update && sudo apt install sshpass -y
-            sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'
-             
-     - run: |
-            sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr' 
+     - run: |            
+         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
+         then 
+            echo $?
+            ls
+         fi
             
+     - run: |            
+          if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
+         then 
+            echo "testup1"
+            echo $?
+         fi   
+      
 workflows:
  version: 2
  rolling_update:
