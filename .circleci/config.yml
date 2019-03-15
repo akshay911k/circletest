@@ -1,6 +1,6 @@
 version: 2
 jobs:
- circleci_if_else_test:
+ vultr_deploy_fetchsh:
    machine: true
    steps:
  #  - run:
@@ -8,30 +8,18 @@ jobs:
    #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
 
 
-     - run: |            
-         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" != 0 ]]
-         then 
-            echo $?
-            ls
-         fi
+     - run: |
+            sudo apt update && sudo apt install sshpass -y
+            sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'
+             
+     - run: |
+            sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr' 
             
-     - run: |            
-         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
-         then 
-            echo "testup1"
-            echo $?
-         fi   
-      - run: |
-         if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
-         then
-            sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'
-            echo "echo ssh2"
-         fi   
 workflows:
  version: 2
  rolling_update:
    jobs:
-     - circleci_if_else_test:
+     - vultr_deploy_fetchsh:
          filters:
            branches:
              only:
