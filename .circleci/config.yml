@@ -10,7 +10,7 @@ jobs:
 
      - run: |            
   #       if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
-         if [ -n "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" ]; then
+         if [ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" ]; then
             echo $?
          fi
         
