@@ -18,7 +18,7 @@ jobs:
      - run: |            
          if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
          then 
-            sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'
+            echo "testup1"
             echo $?
          fi   
              
