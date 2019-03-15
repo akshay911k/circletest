@@ -1,20 +1,33 @@
 version: 2
 jobs:
-  parallelism: 2
-  build:
-    working_directory: ~/foo
-    docker:
-      - image: ruby:2.3.3
-    steps:
-      - checkout
-      - run: bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs=4 --retry=3  # must pass to proceed
-      - run: |
-          if [[ "${CIRCLE_NODE_INDEX}" == 0 ]]
-          then
-             bin/rubocop # TestA: current: bails on fail
-          fi
-      - run: 
-          if [[ "${CIRCLE_NODE_INDEX}" == 1 ]]
-          then
-             bin/rspec # TestB: expected: this should run in addition, even on failure of rubocop
-          fi
+ vultr_deploy_fetchsh:
+   machine: true
+   steps:
+ #  - run:
+  #  command: |
+   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
+
+
+     - run: |            
+         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" != 0 ]]
+         then 
+            echo $?
+            ls
+         fi
+            
+     - run: |            
+         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
+         then 
+            echo "testup1"
+            echo $?
+         fi   
+            
+workflows:
+ version: 2
+ rolling_update:
+   jobs:
+     - vultr_deploy_fetchsh:
+         filters:
+           branches:
+             only:
+               - master
