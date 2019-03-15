@@ -6,11 +6,10 @@ jobs:
  #  - run:
   #  command: |
    #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hostsp
-
+  #       if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
 
      - run: |            
-  #       if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
-         if [ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" ]; then
+         if [ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" != 0 ]; then
             echo $?
          fi
         
