@@ -5,23 +5,28 @@ jobs:
    steps:
  #  - run:
   #  command: |
-   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hostsp
+   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hosts
 
 
      - run: |            
-         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
+         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" != 0 ]]
          then 
             echo $?
             ls
          fi
             
      - run: |            
-          if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
+         if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]
          then 
             echo "testup1"
             echo $?
          fi   
-      
+      - run: |
+         if [[ "sshpass -p $sanju ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
+         then
+            sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'
+            echo "echo ssh2"
+         fi   
 workflows:
  version: 2
  rolling_update:
