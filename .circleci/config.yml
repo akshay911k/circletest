@@ -7,8 +7,6 @@ jobs:
           fingerprints:
             - "eb:a8:88:b9:7e:0e:92:51:10:d0:c9:9b:24:b6:06:34"   
       - run: |
-#           ssh-keyscan -p 22 13.233.254.72 >> ~/.ssh/known_hosts
-#           ssh -vv root@13.233.254.72 -p 22 'ls -lhtr'
            sudo apt update && sudo apt install sshpass -y
            sshpass -p $universe ssh  root@13.233.254.72 -p 22 'ls -lhtr'
              
