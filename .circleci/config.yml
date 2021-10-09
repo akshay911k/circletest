@@ -1,6 +1,8 @@
 version: 2
 jobs:
  vultr_deploy_fetchsh:
+    docker:
+      - image: arvindr226/alpine-ssh
    machine: true
    steps:
       - add_ssh_keys:
