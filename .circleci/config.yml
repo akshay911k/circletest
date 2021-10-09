@@ -10,7 +10,7 @@ jobs:
             - "eb:a8:88:b9:7e:0e:92:51:10:d0:c9:9b:24:b6:06:34"    
       - run: |
             sudo apt update && sudo apt install sshpass -y
-            sshpass -p $universe ssh  ssh  root@13.233.254.72 -p 22 'ls -lhtr'
+            sshpass -p $universe ssh  ssh  root@13.233.254.72 'ls -lhtr'
 # Orchestrate our job run sequence
 workflows:
   version: 2
