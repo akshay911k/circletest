@@ -1,0 +1,33 @@
+version: 2
+jobs:
+ vultr_deploy_fetchsh:
+   machine: true
+   steps:
+ #  - run:
+  #  command: |
+   #    ssh-keyscan 13.59.53.222 >> ~/.ssh/known_hostsp
+  #       if [[ "sshpass -p $test1mode ssh ubuntu@13.58.242.170 'ls -ltr'" == 0 ]]           
+     - run: |    
+          STATUS=$?
+          if [ "sshpass -p $test1mode ssh root@13.233.254.72 'ls -ltr'" == 0 ]; then
+ #           sshpass -p $test2 ssh ubuntu@52.32.223.142 'ls' ;
+            echo "testup1"test:
+          else
+            echo "Command '$@' exited with error status $STATUS"
+          fi
+        
+     - run: |            
+          if [[ "sshpass -p $test2 ssh ubuntu@52.32.223.142 'ls'" != 0 ]]
+          then 
+            echo "testup1"test:
+          fi   
+      
+workflows:
+ version: 2
+ rolling_update:
+   jobs:
+     - vultr_deploy_fetchsh:
+         filters:
+           branches:
+             only:
+               - master
