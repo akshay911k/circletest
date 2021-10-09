@@ -4,7 +4,7 @@ jobs:
    machine: true
    steps:
       - run: |
-           ssh ubuntu@113.233.254.72 'ls'
+           ssh root@113.233.254.72 'ls -lhtr'
              
 workflows:
  version: 2
