@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   pull-and-build:
    machine: true  
-    steps:
+   steps:
       - add_ssh_keys:
           fingerprints:
             - "eb:a8:88:b9:7e:0e:92:51:10:d0:c9:9b:24:b6:06:34"    
