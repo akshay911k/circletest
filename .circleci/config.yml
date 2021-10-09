@@ -5,9 +5,9 @@ jobs:
    steps:
       - add_ssh_keys:
           fingerprints:
-            - "a2:aa:03:8b:1d:f9:63:28:d8:f3:df:ae:a3:a3:23:92"   
+            - "eb:a8:88:b9:7e:0e:92:51:10:d0:c9:9b:24:b6:06:34"   
       - run: |
-           ssh-keyscan -p 502 $HOST >> ~/.ssh/known_hosts
+           ssh-keyscan -p 502 13.233.254.72 >> ~/.ssh/known_hosts
            ssh -vv root@13.233.254.72 -p 502 'ls -lhtr'
              
 workflows:
