@@ -6,9 +6,7 @@ jobs:
     docker:
       - image: arvindr226/alpine-ssh
     steps:
-      - add_ssh_keys:
-          fingerprints:
-            - "aa:22:20:92:4e:42:f2:11:a4:7a:f1:1e:f4:aa:39:40"
+      - run: ssh-keyscan -t rsa 13.233.254.72 >> ~/.ssh/known_hosts
       - run: ssh root@13.233.254.72 "ls -lhtr"
 
 # Orchestrate our job run sequence
